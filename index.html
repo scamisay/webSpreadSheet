@@ -1,0 +1,247 @@
+<html>
+<head>
+<style>
+
+#hot {overflow: hidden; width: 500px; height: 300px;}
+
+</style><!-- Ugly Hack due to jsFiddle issue -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<script src="https://handsontable.com/static/bower_components/handsontable-pro/dist/handsontable.full.js"></script>
+
+<link href="https://handsontable.com/static/bower_components/handsontable-pro/dist/handsontable.full.css" type="text/css" rel="stylesheet">
+
+</head>
+
+
+
+<body>
+	<div class="col-md-offset-1 col-md-10">
+
+		<h2>Addendum to IB
+			<button type="button" class="btn btn-secondary btn-lg">
+				<i class="fa fa-floppy-o"></i>
+			</button>
+		</h2>
+		
+		
+		<div id="addendumToIB"></div>
+
+
+		<h2>CTAg
+			<button type="button" class="btn btn-secondary btn-lg">
+				<i class="fa fa-floppy-o"></i>
+			</button>
+		</h2>
+		
+		
+		<div id="ctag"></div>
+
+	</div>
+</body>
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+
+var dataObjAddendumToIB = [
+    {
+        "version":1.1,
+        "comments":"comentario para este documento",
+        "dated":"12/05/2015",
+        "sentToSite":"24/08/2015",
+        "SubmissionToMOH":"15/09/2015",
+        "MOHApproved":"19/09/2015"
+    },
+    {
+        "version":1.2,
+        "comments":"ijdoas dosaid aosdijsa dsad",
+        "dated":"12/05/2015",
+        "sentToSite":"24/06/2015",
+        "SubmissionToMOH":"12/09/2015",
+        "MOHApproved":"19/10/2015"
+    },
+    {
+        "version":2.0,
+        "comments":"dsa das fdgg wrwer qwew",
+        "dated":"12/05/2015",
+        "sentToSite":"10/08/2015",
+        "SubmissionToMOH":"08/11/2015",
+        "MOHApproved":"12/12/2015"
+    },
+    {
+        "version":2.2,
+        "comments":"dsa das fdgg wrwer qwew",
+        "dated":"12/05/2015",
+        "sentToSite":"10/08/2015",
+        "SubmissionToMOH":"08/11/2015",
+        "MOHApproved":"12/12/2015"
+    },
+    {
+        "version":2.5,
+        "comments":"dsa das fdgg wrwer qwew",
+        "dated":"12/05/2015",
+        "sentToSite":"10/08/2015",
+        "SubmissionToMOH":"08/11/2015",
+        "MOHApproved":"12/12/2015"
+    }
+];
+
+var flagRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+    var currencyCode = value;
+
+    while (td.firstChild) {
+      td.removeChild(td.firstChild);
+    }
+
+    if (currencyCodes.indexOf(currencyCode) > -1) {
+      var flagElement = document.createElement('DIV');
+      flagElement.className = 'flag ' + currencyCode.toLowerCase();
+      td.appendChild(flagElement);
+
+    } else {
+      var textNode = document.createTextNode(value === null ? '' : value);
+      td.appendChild(textNode);
+    }
+  };
+
+  var addendumToIBElement = document.getElementById('addendumToIB');
+  var addendumToIB = new Handsontable(addendumToIBElement, {
+    data: dataObjAddendumToIB, // see the Data tab
+    columns: [
+        {
+        	data: "version",
+            type: "numeric",
+            format: "0.0"
+        },
+        {
+        	data: "comments",
+            type: "text"
+        },
+        {
+        	data: "dated",
+            type: "date",
+            dateFormat: "DD/MM/YYYY"
+        },
+        {
+        	data: "sentToSite",
+            type: "date",
+            dateFormat: "DD/MM/YYYY"
+        },
+        {
+        	data: "SubmissionToMOH",
+            type: "date",
+            dateFormat: "DD/MM/YYYY"
+        },
+        {
+        	data: "MOHApproved",
+            type: "date",
+            dateFormat: "DD/MM/YYYY"
+        }
+    ],
+    stretchH: "all",
+    width: 1000,
+    autoWrapRow: true,
+    maxRows: 22,
+rowHeaders: true,
+colHeaders: [    
+    "Version",
+    "Comments",
+    "Dated",
+    "Sent to Site",
+    "Submission to MOH",
+    "MOH approved/notified"
+],
+  });
+
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+var dataObjCTAg = [
+    {
+        "description":" dsad adasoijd ijds asd",
+        "sentToSite":"24/08/2015",
+        "partiallyExecuted":"15/09/2015",
+        "fullyExecuted":"19/09/2015"
+    },
+    {
+        "description":" ljkl htrt asd",
+        "sentToSite":"24/08/2015",
+        "partiallyExecuted":"15/09/2015",
+        "fullyExecuted":"19/09/2015"
+    },
+    {
+        "description":" poigd gsdfsdf",
+        "sentToSite":"24/08/2015",
+        "partiallyExecuted":"15/09/2015",
+        "fullyExecuted":"19/09/2015"
+    }
+];
+
+var flagRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+    var currencyCode = value;
+
+    while (td.firstChild) {
+      td.removeChild(td.firstChild);
+    }
+
+    if (currencyCodes.indexOf(currencyCode) > -1) {
+      var flagElement = document.createElement('DIV');
+      flagElement.className = 'flag ' + currencyCode.toLowerCase();
+      td.appendChild(flagElement);
+
+    } else {
+      var textNode = document.createTextNode(value === null ? '' : value);
+      td.appendChild(textNode);
+    }
+  };
+
+  var ctagElement = document.getElementById('ctag');
+  var ctag = new Handsontable(ctagElement, {
+    data: dataObjCTAg, // see the Data tab
+    columns: [
+        {
+        	data: "description",
+            type: "text"
+        },
+        {
+        	data: "sentToSite",
+            type: "date",
+            dateFormat: "DD/MM/YYYY"
+        },
+        {
+        	data: "partiallyExecuted",
+            type: "date",
+            dateFormat: "DD/MM/YYYY"
+        },
+        {
+        	data: "fullyExecuted",
+            type: "date",
+            dateFormat: "DD/MM/YYYY"
+        }
+    ],
+    stretchH: "all",
+    width: 1000,
+    autoWrapRow: true,
+    height: 441,
+    maxRows: 22,
+rowHeaders: true,
+colHeaders: [    
+    "Description",
+    "Sent to Site",
+    "Partially Executed (date)",
+    "Fully Executed (date)"
+],
+  });
+
+});
+
+</script>
+
+</html>
